@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User as AuthUser
 
 # Create your models here.
 
@@ -21,14 +21,14 @@ class UserType(models.Model):
         db_table = 'pm_user_type'
 
         def __str__(self):
-        	return self.name
+            return self.name
 
 
 class User(models.Model):
     id = models.BigIntegerField(primary_key=True)
     is_active = models.CharField(max_length=1, blank=True, null=True)
     user_type = models.ForeignKey('UserType', models.DO_NOTHING)
-    # auth_user_id = models.OneToOneField(AuthUser, models.DO_NOTHING, db_column="auth_user_id", related_name='cpeUser')
+    auth_user_id = models.OneToOneField(AuthUser, models.DO_NOTHING, db_column="auth_user_id", related_name='pmUser')
     created_by = models.CharField(max_length=64, blank=True, null=True)
     create_date = models.DateTimeField(blank=True, null=True)
     updated_by = models.CharField(max_length=64, blank=True, null=True)

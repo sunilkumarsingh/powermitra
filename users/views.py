@@ -6,14 +6,16 @@ from django.http import HttpResponse
 
 from django.contrib.auth.models import User
 from rest_framework import viewsets, generics
-from users.serializers import UserSerializer
+from users.serializers import UserSerializer, UserTypeSerializer
 
 from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from models import User, UserType
 
 # Create your views here.
 def index(request):
     return HttpResponse("Hello, world. You're at the users index.")
+
 
 class Dashboard(LoginRequiredMixin, TemplateView):
     """
@@ -25,10 +27,26 @@ class Dashboard(LoginRequiredMixin, TemplateView):
 
 class UserList(generics.ListCreateAPIView):
     """
-    API endpoint that allows users to be viewed or edited.
+    API to list all the users
     """
-    
-    queryset = User.objects.all().order_by('-date_joined')
-    print ">>>>>>>>>>>>>>",queryset.query
+    # queryset = User.objects.filter(is_active=1).order_by('-date_joined')
+    queryset = User.objects.all()
     serializer_class = UserSerializer
+    model = User
 
+class UserTypeList(generics.ListCreateAPIView):
+    """
+    API to list users types
+    """
+    queryset = UserType.objects.all()
+    serializer_class = UserTypeSerializer
+
+
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    API to get the details of a user by id
+    """
+    model = User
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = 'id'
