@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from powermitra.settings import dev
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('django.contrib.auth.urls')),
-    url(r'^users/', include('users.urls')),
+    url(r'', include('users.urls')),
     url(r'accounts/', include('allauth.urls')),
 ]
