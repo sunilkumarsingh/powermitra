@@ -10,7 +10,7 @@ from users.serializers import UserSerializer, UserTypeSerializer
 
 from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from models import User, UserType, AuthUser
+from models import User, UserType
 
 # Create your views here.
 def index(request):
