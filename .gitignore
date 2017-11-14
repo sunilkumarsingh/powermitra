@@ -1,0 +1,8 @@
+*.pyc
+*.log
+# Ignore swap files
+*~
+*.swp
+*.swo
+base.py
+.idea/
