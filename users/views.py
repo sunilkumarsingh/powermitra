@@ -30,7 +30,7 @@ class UserList(generics.ListCreateAPIView):
     API to list all the users
     """
     # queryset = User.objects.filter(is_active=1).order_by('-date_joined')
-    queryset = User.objects.all().order_by('-create_date')
+    queryset = User.objects.filter(is_active=1).order_by('-create_date')
     serializer_class = UserSerializer
     model = User
 
