@@ -7,9 +7,8 @@ from django.contrib.auth.models import User as AuthUser
 # Create your models here.
 
 class UserType(models.Model):
-    id = models.BigIntegerField(primary_key=True)
-    user_type = models.CharField(unique=True, max_length=2, blank=True, null=True)
-    name = models.CharField(max_length=64, blank=True, null=True)
+    # user_type = models.CharField(unique=True, max_length=2, blank=True, null=True)
+    user_type = models.CharField(unique=True, max_length=64, blank=True, null=True)
     is_active = models.CharField(max_length=1, blank=True, null=True)
     created_by = models.CharField(max_length=64, blank=True, null=True)
     create_date = models.DateTimeField(blank=True, null=True)
@@ -25,7 +24,6 @@ class UserType(models.Model):
 
 
 class User(models.Model):
-    id = models.BigIntegerField(primary_key=True)
     login_id = models.CharField(unique=True, max_length=64, blank=True, null=True)
     is_active = models.CharField(max_length=1, blank=True, null=True)
     user_type = models.ForeignKey('UserType', models.DO_NOTHING)
