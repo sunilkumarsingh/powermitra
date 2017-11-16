@@ -30,13 +30,13 @@ class UserList(generics.ListCreateAPIView):
     API to list all the users
     """
     # queryset = User.objects.filter(is_active=1).order_by('-date_joined')
-    queryset = User.objects.all()
+    queryset = User.objects.filter(is_active=1).order_by('-create_date')
     serializer_class = UserSerializer
     model = User
 
 class UserTypeList(generics.ListCreateAPIView):
     """
-    API to list users types
+    API to list type of users
     """
     queryset = UserType.objects.all()
     serializer_class = UserTypeSerializer
