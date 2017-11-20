@@ -23,7 +23,7 @@ class UserType(models.Model):
 
 
 class User(AbstractUser):
-    user_type = models.ForeignKey('UserType', models.DO_NOTHING)
+    user_type = models.ForeignKey('UserType', models.DO_NOTHING, blank=True, null=True)
     phone_regex = RegexValidator(regex='/^(\+\d{1,3}[- ]?)?\d{10}$/',
                                  message="Mobile number must be entered in the format: '+999999999'. Up to 10 digits allowed.")
     mobiles = models.CharField(max_length=10, validators=[phone_regex], blank=True)
