@@ -15,7 +15,11 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 import { UsersComponent } from './users/users.component';
 import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './auth.guard';
+
+import  { UsersService } from './users.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,7 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     AppRoututingModule
   ],
-  providers: [],
+  providers: [UsersService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

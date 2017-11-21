@@ -31,8 +31,8 @@ getUserFromDB(){
               .catch(this.handleError)
   }
 
-  private handleError(error:any, caught:any): any{
-      console.log(">>>>>>>>",error, caught)
-  }
+private handleError(error:any, caught:any): any{
+  console.log(">>>>>>>>",error, caught)
+}
 
 }
