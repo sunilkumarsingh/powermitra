@@ -18,7 +18,7 @@ def image_upload_path(instance, filename):
 
 class UserType(models.Model):
     user_type = models.CharField(unique=True, max_length=64, blank=True, null=True)
-    is_active = models.CharField(max_length=1, blank=True, null=True)
+    is_active = models.BooleanField(default=1)
     created_by = models.CharField(max_length=64, blank=True, null=True)
     create_date = models.DateTimeField(blank=True, null=True)
     updated_by = models.CharField(max_length=64, blank=True, null=True)
@@ -65,8 +65,9 @@ class User(AbstractUser):
     class Meta:
         db_table = 'pm_user'
 
+
 class EPC_Details(models.Model):
-    user_id = models.ForeignKey('User',on_delete=models.DO_NOTHING)
+    user = models.ForeignKey('User',on_delete=models.DO_NOTHING)
     solution_provider = models.CharField(max_length=64, blank=True, null=True)
     registered_name = models.CharField(max_length=64, blank=True, null=True)
     epc_profile = models.CharField(max_length=64, blank=True, null=True)
@@ -97,8 +98,8 @@ class EPC_Details(models.Model):
 
 
 class Solar_Estimator(models.Model):
-    user_id = models.ForeignKey('User',on_delete=models.DO_NOTHING)
-    roof_toparea_info = models.PositiveIntegerField(blank=True, null=True)
+    user = models.ForeignKey('User',on_delete=models.DO_NOTHING)
+    roof_toparea_info = models.CharField(max_length=64, blank=True, null=True)
     solution_for = models.CharField(max_length=20, choices=solution_options)
     consumption_per_month = models.CharField(max_length=64, blank=True, null=True)
     avg_bill_per_month = models.CharField(max_length=64, blank=True, null=True)
@@ -115,13 +116,14 @@ class Solar_Estimator(models.Model):
     class Meta:
         db_table = 'pm_solar_estimator'
 
+
 class ProjectStatus(models.Model):
     status = models.CharField(max_length=200, null=True)
-    is_active = models.CharField(max_length=1, blank=True, null=True)
+    is_active = models.BooleanField(default=1)
     created_date = models.DateTimeField(auto_now_add=True)
-    created_by = models.PositiveIntegerField()
+    created_by =  models.CharField(max_length=64, blank=True, null=True)
     updated_date = models.DateTimeField(auto_now=True, blank=True, null=True)
-    updated_by = models.PositiveIntegerField()
+    updated_by =  models.CharField(max_length=64, blank=True, null=True)
 
     class Meta:
         db_table = "ebc_project_status"
@@ -145,20 +147,18 @@ class Project_Details(models.Model):
     no_of_units_generated = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     Revnue = models.PositiveIntegerField(blank=True, null=True)
     operation_and_maintainance = models.PositiveIntegerField(blank=True, null=True)
-    battery_replacement_cost = models.PositiveIntegerField(blank=True, null=True)
+    battery_replacement_cost = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     miscellaneous = models.CharField(max_length=200, blank=True, null=True)
-    commission_cost = models.PositiveIntegerField(blank=True, null=True)
-    total_cost = models.PositiveIntegerField(blank=True, null=True)
+    commission_cost =models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
+    total_cost = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
-    created_by = models.PositiveIntegerField()
+    created_by = models.CharField(max_length=64, blank=True, null=True)
     updated_date = models.DateTimeField(auto_now=True, blank=True, null=True)
-    updated_by = models.PositiveIntegerField()
+    updated_by =  models.CharField(max_length=64, blank=True, null=True)
 
     class Meta:
         db_table = "ebc_project_details"
         ordering = ['-pk']
-
-
 
 
 class Basic_Assumptions(models.Model):
