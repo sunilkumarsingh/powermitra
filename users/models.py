@@ -56,7 +56,7 @@ class User(AbstractUser):
     min_amount_to_invest = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     max_amount_to_invest = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     IRR_value = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
-    financail_document_upload = models.FileField(upload_to=image_upload_path, blank=True, null=True)
+    financial_document_upload = models.FileField(upload_to=image_upload_path, blank=True, null=True)
     created_by = models.CharField(max_length=64, blank=True, null=True)
     create_date = models.DateTimeField(blank=True, null=True)
     updated_by = models.CharField(max_length=64, blank=True, null=True)
