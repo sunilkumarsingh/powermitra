@@ -17,32 +17,17 @@ export class LoginComponent implements OnInit {
   }
 
 onUserLogin(): void {
-	console.log('onUserLogin Call 11111111111111111',this.user);
-    this.auth.login(this.user)
+  this.auth.login(this.user)
     .then((user) => {
-      console.log('User logged in  22222222222 ', user.json());
+      console.log('User logged in', user.json());
     })
     .catch((err) => {
-      console.log('onUserLogin Call 333333333333333', err);
+      console.log('onUserLogin Post call Error ::', err);
     });
 }
 
-// LoginUser(e){
-// 	e.preventDefault();
-// 	console.log('User Login Event >>>>>>>>>>>>>>>>>>>>>>',e);
-// 	var username = e.target[0].value;
-// 	var password = e.target[1].value;
-// 	console.log('User Login ',username,password);
-
-// 	if(username !== "" && password !== ""){
-// 		this.users.login(username);
-// 		this.router.navigate(['profile']);
-// 	}
-// 	return false;
-// }
-
 RestLogin(e) {
-	console.log('User Login Reset >>>>>>>>>>>> ',e);
+	console.log('User Login Reset ',e);
 }
 
 

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 // third party imports
 // import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -9,12 +10,12 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 import { AppComponent } from './app.component';
 import { AppRoututingModule } from './app.routing';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { NavigationComponent } from './layout/navigation/navigation.component';
-import { UsersComponent } from './users/users.component';
-import { AdminComponent } from './admin/admin.component';
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/layout/header/header.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
+import { NavigationComponent } from './components/layout/navigation/navigation.component';
+import { UsersComponent } from './components/users/users.component';
+import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './auth.guard';
 
@@ -38,6 +39,7 @@ import { AuthService } from './services/auth.service';
     CarouselModule.forRoot(),
       
     BrowserModule,
+    HttpClientModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
