@@ -19,6 +19,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './auth.guard';
 
+import  { CommonService } from './services/common.service';
 import  { UsersService } from './users.service';
 import { AuthService } from './services/auth.service';
 
@@ -45,7 +46,12 @@ import { AuthService } from './services/auth.service';
     ReactiveFormsModule,
     AppRoututingModule
   ],
-  providers: [UsersService, AuthService, AuthGuard],
+  providers: [
+    UsersService,
+    AuthService,
+    AuthGuard,
+    CommonService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
