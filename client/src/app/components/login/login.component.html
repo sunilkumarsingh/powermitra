@@ -1,6 +1,6 @@
 <div id="login_view">
   <!-- <form role="form" (ngSubmit)="LoginUser($event)" name="loginForm" #loginForm="ngForm" novalidate> -->
-  <form role="form" (ngSubmit)="onUserLogin($event)" name="loginForm" #loginForm="ngForm">
+  <form class="login-form" role="form" (ngSubmit)="onUserLogin($event)" name="loginForm" #loginForm="ngForm">
     <div class="form-group">
       <label for="id_email">Email</label>
       <input name="email" id="id_email" type="text" placeholder="Email" class="form-control" [(ngModel)]="user.email"  #email="ngModel" required />
@@ -21,6 +21,10 @@
         </div>
       </div>
     </div>
+    <div *ngIf="user.failed" class="alert alert-danger">
+      {{user.failed}}
+    </div>
+    
     <div class="form-row">
       <button type="submit" class="btn btn-success">Login</button>
       <button type="button" class="btn btn-default" (click)="RestLogin($event); loginForm.reset()">Reset</button>

@@ -22,6 +22,7 @@ import { AuthGuard } from './auth.guard';
 import  { CommonService } from './services/common.service';
 import  { UsersService } from './users.service';
 import { AuthService } from './services/auth.service';
+import { ContactusComponent } from './components/contactus/contactus.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthService } from './services/auth.service';
     NavigationComponent,
     UsersComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    ContactusComponent
   ],
   imports: [
     // ngx-bootstrap

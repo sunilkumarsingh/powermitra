@@ -114,6 +114,7 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_common_service__ = __webpack_require__("../../../../../src/app/services/common.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__users_service__ = __webpack_require__("../../../../../src/app/users.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_contactus_contactus_component__ = __webpack_require__("../../../../../src/app/components/contactus/contactus.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -141,6 +142,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -154,7 +156,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_11__components_layout_navigation_navigation_component__["a" /* NavigationComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__components_users_users_component__["a" /* UsersComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__components_admin_admin_component__["a" /* AdminComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__components_login_login_component__["a" /* LoginComponent */]
+                __WEBPACK_IMPORTED_MODULE_14__components_login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components_contactus_contactus_component__["a" /* ContactusComponent */]
             ],
             imports: [
                 // ngx-bootstrap
@@ -194,6 +197,7 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_home_home_component__ = __webpack_require__("../../../../../src/app/components/home/home.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_admin_admin_component__ = __webpack_require__("../../../../../src/app/components/admin/admin.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_users_users_component__ = __webpack_require__("../../../../../src/app/components/users/users.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_contactus_contactus_component__ = __webpack_require__("../../../../../src/app/components/contactus/contactus.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -206,9 +210,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_3__components_home_home_component__["a" /* HomeComponent */] },
+    { path: '', redirectTo: '/', pathMatch: 'full' },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_3__components_home_home_component__["a" /* HomeComponent */] },
     { path: 'admin', component: __WEBPACK_IMPORTED_MODULE_4__components_admin_admin_component__["a" /* AdminComponent */] },
     { path: 'profile', canActivate: [__WEBPACK_IMPORTED_MODULE_2__auth_guard__["a" /* AuthGuard */]], component: __WEBPACK_IMPORTED_MODULE_5__components_users_users_component__["a" /* UsersComponent */] },
     {
@@ -226,7 +231,7 @@ var routes = [
             }
         ]
     },
-    { path: 'contactus', component: __WEBPACK_IMPORTED_MODULE_3__components_home_home_component__["a" /* HomeComponent */] },
+    { path: 'contactus', component: __WEBPACK_IMPORTED_MODULE_6__components_contactus_contactus_component__["a" /* ContactusComponent */] },
 ];
 var AppRoututingModule = (function () {
     function AppRoututingModule() {
@@ -348,6 +353,67 @@ var AdminComponent = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/contactus/contactus.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/contactus/contactus.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"contact_view\">\n\t<form role=\"form\" (ngSubmit)=\"contactus($event)\" name=\"contactForm\" #contactForm=\"ngForm\">\n\t\t<div class=\"form-group\">\n\t\t\t<label for=\"query\">Query</label>\n\t\t\t<input name=\"query\" id=\"id_query\" type=\"text\" placeholder=\"Query\" class=\"form-control\" [(ngModel)]=\"contact.query\"  #query=\"ngModel\" required />\n\t\t</div>\n\t\t<div class=\"form-group\">\n\t\t\t<label for=\"comments\">Comments</label>\n\t\t\t<textarea name=\"comments\" id=\"id_comments\" form=\"usrform\" placeholder=\"Comments\" class=\"form-control\" [(ngModel)]=\"contact.comments\"  #comments=\"ngModel\" required></textarea>\n\t\t</div>\n\t\t<div class=\"form-row\">\n\t\t\t<button type=\"submit\" class=\"btn btn-success\">Submit</button>\n\t\t</div>\n\t</form>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/contactus/contactus.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactusComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ContactusComponent = (function () {
+    function ContactusComponent() {
+    }
+    ContactusComponent.prototype.ngOnInit = function () {
+    };
+    ContactusComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-contactus',
+            template: __webpack_require__("../../../../../src/app/components/contactus/contactus.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/contactus/contactus.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], ContactusComponent);
+    return ContactusComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/home/home.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -369,7 +435,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='row'>\n  <div class='col-sm-12'>\n    <carousel class='text-center' *ngIf='homeImageList'>\n<!--     <slide>\n    <a class='' routerLink='/videos/' routerLinkActive=\"active\">\n      <img class='img-main-carousel'  [src]='videoListDefaultImage' alt=\"First slide\">\n    </a>\n    <div class=\"carousel-caption\">\n      <h3>Video List</h3>\n      \n      <p><a class='btn btn-primary' routerLink='/videos/' routerLinkActive=\"active\">View Videos</a></p>\n    </div>\n    </slide> -->\n    <slide *ngFor='let imageObj of homeImageList'>\n    <a class='' routerLink='/videos/{{ imageObj.slug }}' routerLinkActive=\"active\">\n      <img class='img-main-carousel'  [src]='imageObj.image' alt=\"First slide\">\n    </a>\n    <div class=\"carousel-caption\">\n      <h3>{{ imageObj.name }}</h3>\n      \n      <p><a class='btn btn-default' routerLink='/videos/{{ imageObj.slug }}' routerLinkActive=\"active\">View</a></p>\n    </div>\n    </slide>\n    </carousel>\n  </div>\n</div>"
+module.exports = "<div class='row'>\n  <div class='col-sm-12'>\n    <carousel class='text-center' *ngIf='homeImageList'>\n<!--     <slide>\n    <a class='' routerLink='/videos/' routerLinkActive=\"active\">\n      <img class='img-main-carousel'  [src]='videoListDefaultImage' alt=\"First slide\">\n    </a>\n    <div class=\"carousel-caption\">\n      <h3>Video List</h3>\n      \n      <p><a class='btn btn-primary' routerLink='/videos/' routerLinkActive=\"active\">View Videos</a></p>\n    </div>\n    </slide> -->\n    <slide *ngFor='let imageObj of homeImageList'>\n    <a class='' routerLink='/videos/{{ imageObj.slug }}' routerLinkActive=\"active\">\n      <img class='img-main-carousel'  [src]='imageObj.image' alt=\"First slide\">\n    </a>\n    <div class=\"carousel-caption\">\n      <h3>{{ imageObj.name }}</h3>\n      <p><a class='btn btn-default' routerLink='/videos/{{ imageObj.slug }}' routerLinkActive=\"active\">View</a></p>\n    </div>\n    </slide>\n    </carousel>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -508,7 +574,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/layout/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav>\n\t<a routerLink=\"/dashboard\">Dashboard</a>\n\t<a routerLink=\"/profile\">My Account</a>\n\t<a routerLink=\"/admin\">Admin</a>\n\t<a routerLink=\"/contactus\">Contact Us</a>\n</nav>\n<p>\n\tHello {{ username }}\n</p>\n<p>\n\t{{ today | date: 'd MMM, yyyy' }}\n</p>"
+module.exports = "<nav>\n\t<a routerLink=\"/\">Dashboard</a>\n\t<a routerLink=\"/profile\">My Account</a>\n\t<a routerLink=\"/admin\">Admin</a>\n\t<a routerLink=\"/contactus\">Contact Us</a>\n</nav>\n<p>\n\tHello {{ username }}\n</p>\n<p>\n\t{{ today | date: 'd MMM, yyyy' }}\n</p>"
 
 /***/ }),
 
@@ -637,7 +703,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"login_view\">\n  <!-- <form role=\"form\" (ngSubmit)=\"LoginUser($event)\" name=\"loginForm\" #loginForm=\"ngForm\" novalidate> -->\n  <form role=\"form\" (ngSubmit)=\"onUserLogin($event)\" name=\"loginForm\" #loginForm=\"ngForm\">\n    <div class=\"form-group\">\n      <label for=\"id_email\">Email</label>\n      <input name=\"email\" id=\"id_email\" type=\"text\" placeholder=\"Email\" class=\"form-control\" [(ngModel)]=\"user.email\"  #email=\"ngModel\" required />\n      <div *ngIf=\"email.invalid && (email.dirty || email.touched)\"\n        class=\"alert alert-danger\">\n        <div *ngIf=\"email.errors.required\">\n          User name is required.\n        </div>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"id_password\">Password</label>\n      <input name=\"password\" id=\"id_password\" type=\"password\" placeholder=\"Password\" class=\"form-control\" [(ngModel)]=\"user.password\" #password=\"ngModel\" required />\n      <div *ngIf=\"password.invalid && (password.dirty || password.touched)\"\n        class=\"alert alert-danger\">\n        <div *ngIf=\"password.errors.required\">\n          User name is required.\n        </div>\n      </div>\n    </div>\n    <div class=\"form-row\">\n      <button type=\"submit\" class=\"btn btn-success\">Login</button>\n      <button type=\"button\" class=\"btn btn-default\" (click)=\"RestLogin($event); loginForm.reset()\">Reset</button>\n      <i>with</i> reset\n    </div>\n  </form>\n</div>"
+module.exports = "<div id=\"login_view\">\n  <!-- <form role=\"form\" (ngSubmit)=\"LoginUser($event)\" name=\"loginForm\" #loginForm=\"ngForm\" novalidate> -->\n  <form class=\"login-form\" role=\"form\" (ngSubmit)=\"onUserLogin($event)\" name=\"loginForm\" #loginForm=\"ngForm\">\n    <div class=\"form-group\">\n      <label for=\"id_email\">Email</label>\n      <input name=\"email\" id=\"id_email\" type=\"text\" placeholder=\"Email\" class=\"form-control\" [(ngModel)]=\"user.email\"  #email=\"ngModel\" required />\n      <div *ngIf=\"email.invalid && (email.dirty || email.touched)\"\n        class=\"alert alert-danger\">\n        <div *ngIf=\"email.errors.required\">\n          User name is required.\n        </div>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"id_password\">Password</label>\n      <input name=\"password\" id=\"id_password\" type=\"password\" placeholder=\"Password\" class=\"form-control\" [(ngModel)]=\"user.password\" #password=\"ngModel\" required />\n      <div *ngIf=\"password.invalid && (password.dirty || password.touched)\"\n        class=\"alert alert-danger\">\n        <div *ngIf=\"password.errors.required\">\n          User name is required.\n        </div>\n      </div>\n    </div>\n    <div *ngIf=\"user.failed\" class=\"alert alert-danger\">\n      {{user.failed}}\n    </div>\n    \n    <div class=\"form-row\">\n      <button type=\"submit\" class=\"btn btn-success\">Login</button>\n      <button type=\"button\" class=\"btn btn-default\" (click)=\"RestLogin($event); loginForm.reset()\">Reset</button>\n      <i>with</i> reset\n    </div>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -673,12 +739,15 @@ var LoginComponent = (function () {
     LoginComponent.prototype.ngOnInit = function () {
     };
     LoginComponent.prototype.onUserLogin = function () {
+        var _this = this;
+        this.user['failed'] = '';
         this.auth.login(this.user)
             .then(function (user) {
             console.log('User logged in', user.json());
         })
             .catch(function (err) {
-            console.log('onUserLogin Post call Error ::', err);
+            _this.user['failed'] = err.json().failed;
+            console.log('onUserLogin Post call Error ::', _this.user);
         });
     };
     LoginComponent.prototype.RestLogin = function (e) {
@@ -818,7 +887,8 @@ var AuthService = (function () {
     AuthService.prototype.login = function (user) {
         var csrftoken = this.common.getCookies();
         console.log('CommonService :: ', csrftoken);
-        var url = '/users/list/';
+        // let url: string = '/users/list/';
+        var url = '/login/';
         this.headers.set("X-CSRFToken", csrftoken);
         return this.http.post(url, user, { headers: this.headers }).toPromise();
     };

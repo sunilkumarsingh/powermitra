@@ -5,10 +5,11 @@ import { AuthGuard } from './auth.guard';
 import { HomeComponent }   from './components/home/home.component';
 import { AdminComponent }   from './components/admin/admin.component';
 import { UsersComponent }   from './components/users/users.component';
+import { ContactusComponent }   from './components/contactus/contactus.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: HomeComponent },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'profile', canActivate:[AuthGuard] , component: UsersComponent },
   { 
@@ -26,7 +27,7 @@ const routes: Routes = [
   		}  		
   	]
   },
-  { path: 'contactus', component: HomeComponent },
+  { path: 'contactus', component: ContactusComponent },
 ];
 
 @NgModule({

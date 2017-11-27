@@ -17,12 +17,14 @@ export class LoginComponent implements OnInit {
   }
 
 onUserLogin(): void {
+  this.user['failed'] ='';
   this.auth.login(this.user)
     .then((user) => {
       console.log('User logged in', user.json());
     })
     .catch((err) => {
-      console.log('onUserLogin Post call Error ::', err);
+      this.user['failed'] = err.json().failed;
+      console.log('onUserLogin Post call Error ::', this.user);
     });
 }
 
