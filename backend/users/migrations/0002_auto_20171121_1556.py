@@ -8,6 +8,11 @@ from django.db import migrations, models
 import django.db.models.deletion
 import users.models
 
+from django.core.management import call_command
+
+def loadfixture(apps, schema_editor):
+    call_command('loaddata', 'initial_data.json')
+
 
 class Migration(migrations.Migration):
 
@@ -16,6 +21,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+
+        migrations.RunPython(loadfixture),
+
         migrations.CreateModel(
             name='Basic_Assumptions',
             fields=[
