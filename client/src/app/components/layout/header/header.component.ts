@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import  { UsersService } from '../../../users.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'pm-header',
@@ -9,11 +9,16 @@ import  { UsersService } from '../../../users.service';
 export class HeaderComponent implements OnInit {
   username = 'anonymous';
 
-  constructor( private user:UsersService) { }
+  constructor( private auth:AuthService) { }
 
   ngOnInit() {
-	  this.username = this.user.username;
-  	console.log("Header, Is user logged in? ::", this.user);
+  	console.log("Header, Is user logged in? ::", this.auth);
   }
+  
   today: number = Date.now();
+
+onLogout() {
+  this.auth.logout();
+}
+
 }

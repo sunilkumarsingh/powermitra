@@ -1,11 +1,13 @@
 <nav>
 	<a routerLink="/">Dashboard</a>
 	<a routerLink="/profile">My Account</a>
-	<a routerLink="/admin">Admin</a>
 	<a routerLink="/contactus">Contact Us</a>
+	<a routerLink="/admin" *ngIf="!auth.isLoggedIn">Admin</a>
+	<a routerLink="/logout" *ngIf="auth.isLoggedIn" (click)="onLogout()">Logout</a>
+	<!-- <button md-button *ngIf="auth.isLoggedIn" (click)="onLogout()">Logout</button> -->
 </nav>
 <p>
-	Hello {{ username }}
+	Hello {{ auth.currentuser.name }}
 </p>
 <p>
 	{{ today | date: 'd MMM, yyyy' }}

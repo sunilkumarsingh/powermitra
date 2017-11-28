@@ -11,8 +11,9 @@ const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '', component: HomeComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'profile', canActivate:[AuthGuard] , component: UsersComponent },
-  { 
+  // { path: 'profile', canActivate:[AuthGuard] , component: UsersComponent },
+  { path: 'profile', component: UsersComponent },
+  {
   	path: 'users', 
   	// component: UsersComponent
   	pathMatch: 'prefix',
@@ -28,6 +29,7 @@ const routes: Routes = [
   	]
   },
   { path: 'contactus', component: ContactusComponent },
+  { path: 'logout', component: AdminComponent },
 ];
 
 @NgModule({

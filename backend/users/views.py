@@ -29,7 +29,7 @@ class UserLogin(generics.ListCreateAPIView):
             return Response({"failed": message}, status=HTTP_401_UNAUTHORIZED)
 
         # token, _ = Token.objects.get_or_create(user=user)
-        return Response({"id": user.id,"email": user.email,'name':user.username})
+        return Response({"status":'success',"id": user.id,"email": user.email,'name':user.username})
 
 
 class LoggedUserList(generics.ListCreateAPIView):
