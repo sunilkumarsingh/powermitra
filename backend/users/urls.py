@@ -6,10 +6,8 @@ from users import views
 from powermitra.settings import dev
 
 urlpatterns = [
-    # url(r'^users/', include(user_urls)),
     url(r'^users/list/$', views.LoggedUserList.as_view()),
-    # url(r'^login/', auth_views.login, {'template_name': 'index.html'}, name='login'),
-    url(r'^login/', views.UserLogin.as_view()),
+    url(r'^users/login/', views.UserLogin.as_view()),
 ]
 
 
