@@ -22,14 +22,12 @@ onUserLogin(): void {
         localStorage.setItem('user', user.json().id);
         // localStorage.removeItem('user');
         this.auth.isLoggedIn = true;
-        this.auth.currentuser = user.json();
-        console.log('onUserLogin Post call Error ::', this.auth.currentuser);
         this.router.navigate(['/profile']);
       }      
     })
     .catch((err) => {
       this.user['status'] = 'failed';
-      this.user['message'] = err.json().failed;
+      this.user['message'] = err.json().message;
       console.log('onUserLogin Post call Error ::', this.user);
     });
 }

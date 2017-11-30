@@ -112,9 +112,8 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__auth_guard__ = __webpack_require__("../../../../../src/app/auth.guard.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_common_service__ = __webpack_require__("../../../../../src/app/services/common.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__users_service__ = __webpack_require__("../../../../../src/app/users.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_contactus_contactus_component__ = __webpack_require__("../../../../../src/app/components/contactus/contactus.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_contactus_contactus_component__ = __webpack_require__("../../../../../src/app/components/contactus/contactus.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -128,7 +127,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 // third party imports
 // import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-
 
 
 
@@ -157,7 +155,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_12__components_users_users_component__["a" /* UsersComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__components_admin_admin_component__["a" /* AdminComponent */],
                 __WEBPACK_IMPORTED_MODULE_14__components_login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__components_contactus_contactus_component__["a" /* ContactusComponent */]
+                __WEBPACK_IMPORTED_MODULE_18__components_contactus_contactus_component__["a" /* ContactusComponent */]
             ],
             imports: [
                 // ngx-bootstrap
@@ -171,8 +169,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_7__app_routing__["a" /* AppRoututingModule */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_17__users_service__["a" /* UsersService */],
-                __WEBPACK_IMPORTED_MODULE_18__services_auth_service__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_17__services_auth_service__["a" /* AuthService */],
                 __WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */],
                 __WEBPACK_IMPORTED_MODULE_16__services_common_service__["a" /* CommonService */]
             ],
@@ -812,7 +809,6 @@ module.exports = "<h1>\n  Show the user details after logged in !\n  Hello {{ na
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsersComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__users_service__ = __webpack_require__("../../../../../src/app/users.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -824,10 +820,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 var UsersComponent = (function () {
-    function UsersComponent(users, route) {
-        this.users = users;
+    function UsersComponent(route) {
         this.route = route;
     }
     UsersComponent.prototype.ngOnInit = function () {
@@ -838,7 +832,7 @@ var UsersComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/users/users.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/users/users.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__users_service__["a" /* UsersService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]])
     ], UsersComponent);
     return UsersComponent;
 }());
@@ -944,78 +938,6 @@ var CommonService = (function () {
         __metadata("design:paramtypes", [])
     ], CommonService);
     return CommonService;
-}());
-
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/users.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsersService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/toPromise.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/catch.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var endpoint = 'http://localhost:8000/users/';
-var UsersService = (function () {
-    function UsersService(http) {
-        this.http = http;
-        this.isUserLoggedIn = false;
-        this.BASE_URL = 'http://localhost:8000/users';
-        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
-        this.isUserLoggedIn = false;
-    }
-    UsersService.prototype.setUserLoggedIn = function (username, password) {
-        this.isUserLoggedIn = true;
-        this.username = username;
-        var data = this.http.get(endpoint)
-            .map(function (response) { return response.json(); })
-            .catch(this.handleError);
-        console.log('Set user as logged in :::', username, password);
-        // this.getUserFromDB();
-    };
-    UsersService.prototype.login = function (user) {
-        // let url: string = `${this.BASE_URL}/login`;
-        var url = "" + this.BASE_URL;
-        return this.http.post(url, user, { headers: this.headers }).toPromise();
-    };
-    UsersService.prototype.getUserLoggedIn = function () {
-        return this.isUserLoggedIn;
-    };
-    UsersService.prototype.getUserFromDB = function () {
-        var data = this.http.get(endpoint)
-            .map(function (response) { return response.json(); })
-            .catch(this.handleError);
-        console.log('Set user as logged in 1111111111111 :: ', data);
-        return data;
-    };
-    UsersService.prototype.handleError = function (error, caught) {
-        console.log("users caught exceptions", error, caught);
-    };
-    UsersService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
-    ], UsersService);
-    return UsersService;
 }());
 
 
