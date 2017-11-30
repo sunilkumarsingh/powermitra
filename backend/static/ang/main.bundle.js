@@ -207,7 +207,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', redirectTo: '/', pathMatch: 'full' },
+    // { path:"", redirectTo: '/', pathMatch: 'full' },
     { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_home_home_component__["a" /* HomeComponent */] },
     { path: 'admin', component: __WEBPACK_IMPORTED_MODULE_3__components_admin_admin_component__["a" /* AdminComponent */] },
     // { path: 'profile', canActivate:[AuthGuard] , component: UsersComponent },
@@ -229,6 +229,7 @@ var routes = [
     },
     { path: 'contactus', component: __WEBPACK_IMPORTED_MODULE_5__components_contactus_contactus_component__["a" /* ContactusComponent */] },
     { path: 'logout', component: __WEBPACK_IMPORTED_MODULE_3__components_admin_admin_component__["a" /* AdminComponent */] },
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_2__components_home_home_component__["a" /* HomeComponent */] } //PageNotFoundComponent
 ];
 var AppRoututingModule = (function () {
     function AppRoututingModule() {
@@ -577,7 +578,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/layout/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav>\n\t<a routerLink=\"/\">Dashboard</a>\n\t<a routerLink=\"/profile\">My Account</a>\n\t<a routerLink=\"/contactus\">Contact Us</a>\n\t<a routerLink=\"/admin\" *ngIf=\"!auth.isLoggedIn\">Admin</a>\n\t<a routerLink=\"/logout\" *ngIf=\"auth.isLoggedIn\" (click)=\"onLogout()\">Logout</a>\n\t<!-- <button md-button *ngIf=\"auth.isLoggedIn\" (click)=\"onLogout()\">Logout</button> -->\n</nav>\n<p>\n\tHello {{ auth.name }}\n</p>\n<p>\n\t{{ today | date: 'd MMM, yyyy' }}\n</p>"
+module.exports = "<nav>\n\t<a routerLink=\"/\" routerLinkActive=\"active\">Dashboard</a>\n\t<a routerLink=\"/profile\" routerLinkActive=\"active\">My Account</a>\n\t<a routerLink=\"/contactus\" routerLinkActive=\"active\">Contact Us</a>\n\t<a routerLink=\"/admin\" routerLinkActive=\"active\" *ngIf=\"!auth.isLoggedIn\">Admin</a>\n\t<a routerLink=\"/logout\" routerLinkActive=\"active\" *ngIf=\"auth.isLoggedIn\" (click)=\"onLogout()\">Logout</a>\n\t<!-- <button md-button *ngIf=\"auth.isLoggedIn\" (click)=\"onLogout()\">Logout</button> -->\n</nav>\n<p>\n\tHello {{ auth.name }}\n</p>\n<p>\n\t{{ today | date: 'd MMM, yyyy' }}\n</p>"
 
 /***/ }),
 

@@ -19,6 +19,13 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_401_UNAUTHORIZED
 from rest_framework.authtoken.models import Token
 
+class UsersViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
 class UserLogin(generics.ListCreateAPIView):
     def post(self, request, *args, **kwargs):
         email = request.data['email']
