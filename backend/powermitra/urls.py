@@ -30,4 +30,5 @@ urlpatterns = [
     # url(r'^admin/', include('pmadmin.urls')),
     url(r'', include('users.urls')),
     # url(r'accounts/', include('allauth.urls')),
+
 ]
