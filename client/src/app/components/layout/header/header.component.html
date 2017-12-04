@@ -4,6 +4,7 @@
 	<a routerLink="/contactus" routerLinkActive="active">Contact Us</a>
 	<a routerLink="/admin" routerLinkActive="active" *ngIf="!auth.isLoggedIn">Admin</a>
 	<a routerLink="/logout" routerLinkActive="active" *ngIf="auth.isLoggedIn" (click)="onLogout()">Logout</a>
+	<a href="/pmadmin/">PM Admin</a>
 	<!-- <button md-button *ngIf="auth.isLoggedIn" (click)="onLogout()">Logout</button> -->
 </nav>
 <p>

@@ -24,10 +24,10 @@ urlpatterns = [
     
     url(r'^$',TemplateView.as_view(template_name="index.html"),name="home"),
     # url(r'^.*$',TemplateView.as_view(template_name="index.html"),name="home"),
-    
-    # url(r'admin/$',TemplateView.as_view(template_name="index.html"),name="home"),
-    # url(r'contactus/$',TemplateView.as_view(template_name="index.html"),name="home"),
-    # url(r'profile/$',TemplateView.as_view(template_name="index.html"),name="home"),
+    # url(r'^contactus', TemplateView.as_view(template_name='contactus.html'), name='contactus'),
+
+    url(r'^pmadmin/', TemplateView.as_view(template_name="pmadmin/pmadmin.html"), name="pmadmin"),
+    # url(r'^admin/', include('pmadmin.urls')),
     url(r'', include('users.urls')),
     # url(r'accounts/', include('allauth.urls')),
 ]

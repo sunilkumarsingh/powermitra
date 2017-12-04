@@ -22,6 +22,7 @@ import { AuthGuard } from './auth.guard';
 import  { CommonService } from './services/common.service';
 import { AuthService } from './services/auth.service';
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ContactusComponent } from './components/contactus/contactus.component';
     UsersComponent,
     AdminComponent,
     LoginComponent,
-    ContactusComponent
+    ContactusComponent,
+    PageNotFoundComponent
   ],
   imports: [
     // ngx-bootstrap

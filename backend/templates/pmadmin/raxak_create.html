@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}
+	<title>Raxak Create</title>
+{% endblock title %}
+
+{% block css %} 
+<link  href="{% static 'css/create.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+
+{% endblock css %}
+
+{% block header %}
+<div  id="container" ng-app="raxak_create" ng-init="auth.user={{ user.cpeUser.id }}; auth.username ='{{ user.username }}'; auth.parents ='{{user.cpeUser.parent.id}}';auth.scan_only='{{ user.cpeUser.remediate_priviledge }}';auth.user_type='{{user.cpeUser.user_type.name}}';
+ user_expiry='{{user.cpeUser.user_expiry_date}}'">
+	{% include 'create/header.html' %}
+{% endblock header %}
+
+{% block navigation %}
+
+	{% include 'create/create_navigation.html' %}
+{% endblock navigation %}
+
+{% block content %}
+        <div ui-view="">
+		</div>
+  
+{% endblock content %}
+
+{% block footer %}
+    {% include 'create/footer.html' %}
+      </div>
+{% endblock footer %}
+
+
+{% block basejs %}
+	{{ block.super }}
+{% endblock basejs %}
+
+{% block js %}
+<script src="{% static 'js/raxak_create.js' %}"></script>
+<script src="{% static 'js/resource_controllers.js' %}"></script>
+<script src="{% static 'js/profile_controllers.js' %}"></script>
+{% endblock js %}
+
+

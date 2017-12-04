@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<pm-header></pm-header>\n<div class='container main-container'>\n\t<router-outlet></router-outlet>\n</div>\n<pm-footer></pm-footer>"
+module.exports = "<pm-header></pm-header>\n<div class='container main-container' ng-init=\"auth.user='mitra';\">\n\t<router-outlet></router-outlet>\n</div>\n<pm-footer></pm-footer>"
 
 /***/ }),
 
@@ -114,6 +114,7 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_common_service__ = __webpack_require__("../../../../../src/app/services/common.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_contactus_contactus_component__ = __webpack_require__("../../../../../src/app/components/contactus/contactus.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/components/page-not-found/page-not-found.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -127,6 +128,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 // third party imports
 // import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 
 
 
@@ -155,7 +157,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_12__components_users_users_component__["a" /* UsersComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__components_admin_admin_component__["a" /* AdminComponent */],
                 __WEBPACK_IMPORTED_MODULE_14__components_login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__components_contactus_contactus_component__["a" /* ContactusComponent */]
+                __WEBPACK_IMPORTED_MODULE_18__components_contactus_contactus_component__["a" /* ContactusComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */]
             ],
             imports: [
                 // ngx-bootstrap
@@ -194,6 +197,7 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_admin_admin_component__ = __webpack_require__("../../../../../src/app/components/admin/admin.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_users_users_component__ = __webpack_require__("../../../../../src/app/components/users/users.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_contactus_contactus_component__ = __webpack_require__("../../../../../src/app/components/contactus/contactus.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/components/page-not-found/page-not-found.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -206,8 +210,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
-    // { path:"", redirectTo: '/', pathMatch: 'full' },
+    { path: '', redirectTo: '/', pathMatch: 'full' },
     { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_home_home_component__["a" /* HomeComponent */] },
     { path: 'admin', component: __WEBPACK_IMPORTED_MODULE_3__components_admin_admin_component__["a" /* AdminComponent */] },
     // { path: 'profile', canActivate:[AuthGuard] , component: UsersComponent },
@@ -229,14 +234,14 @@ var routes = [
     },
     { path: 'contactus', component: __WEBPACK_IMPORTED_MODULE_5__components_contactus_contactus_component__["a" /* ContactusComponent */] },
     { path: 'logout', component: __WEBPACK_IMPORTED_MODULE_3__components_admin_admin_component__["a" /* AdminComponent */] },
-    { path: '**', component: __WEBPACK_IMPORTED_MODULE_2__components_home_home_component__["a" /* HomeComponent */] } //PageNotFoundComponent
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_6__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
 ];
 var AppRoututingModule = (function () {
     function AppRoututingModule() {
     }
     AppRoututingModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forRoot(routes)],
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forRoot(routes, { useHash: true })],
             exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */]]
         })
     ], AppRoututingModule);
@@ -578,7 +583,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/layout/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav>\n\t<a routerLink=\"/\" routerLinkActive=\"active\">Dashboard</a>\n\t<a routerLink=\"/profile\" routerLinkActive=\"active\">My Account</a>\n\t<a routerLink=\"/contactus\" routerLinkActive=\"active\">Contact Us</a>\n\t<a routerLink=\"/admin\" routerLinkActive=\"active\" *ngIf=\"!auth.isLoggedIn\">Admin</a>\n\t<a routerLink=\"/logout\" routerLinkActive=\"active\" *ngIf=\"auth.isLoggedIn\" (click)=\"onLogout()\">Logout</a>\n\t<!-- <button md-button *ngIf=\"auth.isLoggedIn\" (click)=\"onLogout()\">Logout</button> -->\n</nav>\n<p>\n\tHello {{ auth.name }}\n</p>\n<p>\n\t{{ today | date: 'd MMM, yyyy' }}\n</p>"
+module.exports = "<nav>\n\t<a routerLink=\"/\" routerLinkActive=\"active\">Dashboard</a>\n\t<a routerLink=\"/profile\" routerLinkActive=\"active\">My Account</a>\n\t<a routerLink=\"/contactus\" routerLinkActive=\"active\">Contact Us</a>\n\t<a routerLink=\"/admin\" routerLinkActive=\"active\" *ngIf=\"!auth.isLoggedIn\">Admin</a>\n\t<a routerLink=\"/logout\" routerLinkActive=\"active\" *ngIf=\"auth.isLoggedIn\" (click)=\"onLogout()\">Logout</a>\n\t<a href=\"/pmadmin/\">PM Admin</a>\n\t<!-- <button md-button *ngIf=\"auth.isLoggedIn\" (click)=\"onLogout()\">Logout</button> -->\n</nav>\n<p>\n\tHello {{ auth.name }}\n</p>\n<p>\n\t{{ today | date: 'd MMM, yyyy' }}\n</p>"
 
 /***/ }),
 
@@ -778,6 +783,67 @@ var LoginComponent = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/page-not-found/page-not-found.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/page-not-found/page-not-found.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"login_bx1\">\n\t<div class=\"row\">\n\t\t<div class=\"col s8 offset-s2\">\n\t\t\t<div class=\"row center\"><h1 class=\"red-text \">404 <p>ERROR</p></h1>\n\t\t</div>\n\t\t<div class=\"row clear center\">\n\t\t\t<h5>  File not found, Sorry </h5>\n\t\t</div>\n\t</div>\n</div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/page-not-found/page-not-found.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PageNotFoundComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var PageNotFoundComponent = (function () {
+    function PageNotFoundComponent() {
+    }
+    PageNotFoundComponent.prototype.ngOnInit = function () {
+    };
+    PageNotFoundComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-page-not-found',
+            template: __webpack_require__("../../../../../src/app/components/page-not-found/page-not-found.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/page-not-found/page-not-found.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], PageNotFoundComponent);
+    return PageNotFoundComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/users/users.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -931,7 +997,8 @@ var CommonService = (function () {
     function CommonService() {
     }
     CommonService.prototype.getCookies = function () {
-        var csrftoken = '6tWHslc8BwjUHWDLZ3JdiVP5Rfz9zNKWKv8zNplya3hjQjB1FzMmXhirEPMCtCRk';
+        // var csrftoken = '6tWHslc8BwjUHWDLZ3JdiVP5Rfz9zNKWKv8zNplya3hjQjB1FzMmXhirEPMCtCRk';
+        var csrftoken = 'lcsyulD19T4RpFQhr4LFKe21B7ADJFodwMIGMImndctVRWwYzNKBG3YV6tuILCsr';
         return csrftoken;
     };
     CommonService = __decorate([
