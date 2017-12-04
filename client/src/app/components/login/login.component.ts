@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-// import { UsersService } from '../../users.service';
 import { User } from '../../models/user';
 
 @Component({
@@ -17,13 +16,18 @@ export class LoginComponent implements OnInit {
   }
 
 onUserLogin(): void {
-  this.user['failed'] ='';
   this.auth.login(this.user)
     .then((user) => {
-      console.log('User logged in', user.json());
+      if (user.json().status === 'success') {
+        localStorage.setItem('user', user.json().id);
+        // localStorage.removeItem('user');
+        this.auth.isLoggedIn = true;
+        this.router.navigate(['/profile']);
+      }      
     })
     .catch((err) => {
-      this.user['failed'] = err.json().failed;
+      this.user['status'] = 'failed';
+      this.user['message'] = err.json().message;
       console.log('onUserLogin Post call Error ::', this.user);
     });
 }
@@ -31,7 +35,5 @@ onUserLogin(): void {
 RestLogin(e) {
 	console.log('User Login Reset ',e);
 }
-
-
 
 }

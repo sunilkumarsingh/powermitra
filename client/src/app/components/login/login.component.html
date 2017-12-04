@@ -21,8 +21,8 @@
         </div>
       </div>
     </div>
-    <div *ngIf="user.failed" class="alert alert-danger">
-      {{user.failed}}
+    <div *ngIf="user.status=='failed'" class="alert alert-danger">
+      {{user.message}}
     </div>
     
     <div class="form-row">

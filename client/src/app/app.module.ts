@@ -20,7 +20,6 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './auth.guard';
 
 import  { CommonService } from './services/common.service';
-import  { UsersService } from './users.service';
 import { AuthService } from './services/auth.service';
 import { ContactusComponent } from './components/contactus/contactus.component';
 
@@ -49,7 +48,6 @@ import { ContactusComponent } from './components/contactus/contactus.component';
     AppRoututingModule
   ],
   providers: [
-    UsersService,
     AuthService,
     AuthGuard,
     CommonService

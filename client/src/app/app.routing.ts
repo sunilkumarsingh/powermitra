@@ -8,11 +8,12 @@ import { UsersComponent }   from './components/users/users.component';
 import { ContactusComponent }   from './components/contactus/contactus.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
+  // { path:"", redirectTo: '/', pathMatch: 'full' },
   { path: '', component: HomeComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'profile', canActivate:[AuthGuard] , component: UsersComponent },
-  { 
+  // { path: 'profile', canActivate:[AuthGuard] , component: UsersComponent },
+  { path: 'profile', component: UsersComponent },
+  {
   	path: 'users', 
   	// component: UsersComponent
   	pathMatch: 'prefix',
@@ -28,6 +29,8 @@ const routes: Routes = [
   	]
   },
   { path: 'contactus', component: ContactusComponent },
+  { path: 'logout', component: AdminComponent },
+  { path: '**', component: HomeComponent } //PageNotFoundComponent
 ];
 
 @NgModule({

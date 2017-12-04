@@ -1,9 +1,13 @@
 from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
-# from rest_framework import routers
+from rest_framework import routers
+from powermitra.settings import dev
 
 from users import views
-from powermitra.settings import dev
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UsersViewSet)
+
 
 urlpatterns = [
     # url(r'^users/', include(user_urls)),
@@ -20,6 +24,7 @@ urlpatterns = [
     url(r'^consumerepc/list/(?P<id>[0-9]+)/$', views.ConsumerEPCList.as_view()),
 
     url(r'^epcreview/(?P<id>[0-9]+)/$', views.ConsumerWithEPCReview.as_view()),
+
 
 ]
 

@@ -21,6 +21,13 @@ from rest_framework.authtoken.models import Token
 from django.contrib.auth import get_user_model
 from rest_framework import permissions
 
+class UsersViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
 class UserLogin(generics.ListCreateAPIView):
     """
     Users Login api
@@ -30,11 +37,22 @@ class UserLogin(generics.ListCreateAPIView):
         password = request.data['password']
         user = authenticate(username=email, password=password)
         if not user:
-            message = "Please enter a correct username and password."
-            return Response({"failed": message}, status=HTTP_401_UNAUTHORIZED)
+            return Response({
+                    "status": "failed",
+                    "message": "Please enter a correct username and password."
+                    }, status=HTTP_401_UNAUTHORIZED)
 
-        # token, _ = Token.objects.get_or_create(user=user)
-        return Response({"id": user.id,"email": user.email,'name':user.username})
+        # return Response({"status":'success',"id": user.id,"email": user.email,'name':user.username})
+        if user.is_active:
+            serialized = UserSerializer(user)
+            return Response({
+                "status": "success",
+                "data":serialized.data})
+        else:
+            return Response({
+                'status': "failed",
+                'message': "Your account is not active, Please contact to administrator."
+                }, status=HTTP_401_UNAUTHORIZED)
 
 
 class UsersList(generics.ListCreateAPIView):
