@@ -145,7 +145,7 @@ class Project_Details(models.Model):
     next_payment_amount = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     status = models.ForeignKey('ProjectStatus',on_delete=models.DO_NOTHING)
     no_of_units_generated = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
-    Revnue = models.PositiveIntegerField(blank=True, null=True)
+    revenue = models.PositiveIntegerField(blank=True, null=True)
     operation_and_maintainance = models.PositiveIntegerField(blank=True, null=True)
     battery_replacement_cost = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     miscellaneous = models.CharField(max_length=200, blank=True, null=True)
